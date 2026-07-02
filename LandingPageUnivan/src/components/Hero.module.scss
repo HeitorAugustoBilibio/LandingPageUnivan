@@ -1,0 +1,216 @@
+.hero {
+  position: relative;
+  background: var(--navy-900);
+  padding: 100px 160px;
+  min-height: 720px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  /* glow azul no canto superior esquerdo */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -180px;
+    left: -120px;
+    width: 640px;
+    height: 640px;
+    background: radial-gradient(circle, rgba(45, 82, 224, 0.28) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* glow indigo no canto inferior direito */
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -160px;
+    right: -80px;
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.20) 0%, transparent 70%);
+    pointer-events: none;
+  }
+}
+
+/* grade de pontos discreta sobre o fundo */
+.hero::before,
+.hero::after {
+  z-index: 0;
+}
+
+.dotGrid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1120px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  h1 {
+    font-size: 80px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  p {
+    font-size: 18px;
+    color: var(--gray-400);
+    line-height: 1.65;
+    max-width: 420px;
+  }
+}
+
+.ctas {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* animacao flutuante suave no mockup */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+.mockup {
+  width: 100%;
+  max-width: 520px;
+  background: var(--navy-800);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  box-shadow:
+    var(--glow-blue),
+    var(--shadow-xl);
+  animation: float 5s ease-in-out infinite;
+}
+
+.chrome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--navy-700);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+
+  span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gray-500);
+
+    &:nth-child(1) { background: #EF4444; }
+    &:nth-child(2) { background: #F59E0B; }
+    &:nth-child(3) { background: #22C55E; }
+  }
+}
+
+.urlBar {
+  margin-left: 10px;
+  flex: 1;
+  background: var(--navy-800);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--gray-400);
+}
+
+.mockupBody {
+  padding: 0;
+  overflow: hidden;
+}
+
+.screenshot {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top left;
+  max-height: 360px;
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.statCard {
+  background: var(--navy-700);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.statLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.statValue {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--white);
+
+  &.green  { color: var(--green-500); }
+  &.orange { color: var(--orange-500); }
+  &.red    { color: var(--red-500); }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+
+  th {
+    text-align: left;
+    padding: 6px 8px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    border-bottom: 1px solid var(--navy-700);
+  }
+
+  td {
+    padding: 8px;
+    color: var(--gray-300);
+    border-bottom: 1px solid rgba(255,255,255,.04);
+  }
+
+  tr:last-child td { border-bottom: none; }
+}
